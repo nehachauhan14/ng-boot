@@ -1,0 +1,41 @@
+  <div > 
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Create Employee</button>
+  </div>
+<!---->
+
+<div class="container" style="display:inline-block">
+    <!-- Modal -->
+    <div class="modal fade" id="addModal" role="dialog">
+      <div class="modal-dialog">
+  
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h1 class="modal-title" style = "text-align: center">Add New Employee</h1>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="firstName">First Name:</label>
+              <input type="text" class="form-control" id="firstName">
+              <label for="lastName">Last Name:</label>
+              <input type="text" class="form-control" id="lastName">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optradio">Male</label>
+                <label>
+                  <input type="radio" name="optradio">Female</label>
+              </div>
+              <label for="salary">Salary:</label>
+              <input type="text" class="form-control" id="salary">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  
