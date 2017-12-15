@@ -6,7 +6,7 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class EmployeeService
 {
-    private url = "http://localhost:57163/api/Employees/"; 
+    private url = "https://a14fae27.ngrok.io/api/Employees/"; 
     constructor(private http : Http)
     {
 
@@ -31,20 +31,16 @@ export class EmployeeService
         return Observable.throw(errMsg);
     }
 
-    test():Observable<Employee[]> {
-        return this.http.get(this.url)
-            .map(this.extractData)
-            .catch(this.handleError);
-    }
+    
     
     insertData(employee: Employee): Observable<Employee[]> {
         
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.url, employee, options ).map((res: Response) => res.json());
-    //    return this.http.post(this.url, employee, options)
-    //                    .map(this.extractData)
-    //                    .catch(this.handleError);
+        return this.http.post(this.url, employee, options ).map((res: Response) => res.json())
+        .catch((error:any) => Observable.throw(error.json().error || 'Server error')) 
+                               
+    
         }
 }

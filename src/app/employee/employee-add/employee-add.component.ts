@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
 import { Employee } from '../employee';
+import { EmployeeListComponent } from '../employee-list.component';
+
 import { EmployeeService } from '../employee.service';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { EmployeeComponent } from '../employee.component';
+import 'rxjs/add/operator/mergeMap';
+
 
 @Component({
   selector: 'app-employee-add',
@@ -20,16 +24,22 @@ lastName : string ;
 gender : string ; 
 salary : number ; 
   
-  constructor(private _employeeDataService : EmployeeService){ }
-
-  ngOnInit() {
-  
+  constructor(private _employeeDataService : EmployeeService, private _empList : EmployeeListComponent){ 
+    
   }
 
-
-  addEmployee() : void {
-    console.log(this.newEmp); 
-    this._employeeDataService.insertData(this.newEmp);
+  ngOnInit() {
+    
+  }
+  
+  addEmployee() : void {    
+    this._employeeDataService.insertData(this.newEmp)
+    .map(() => {                
+              return this._empList.getEmployee()
+                
+            }
+        )
+    .subscribe(employee => {console.log(employee);});
   }
 
 }

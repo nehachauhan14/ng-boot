@@ -25,8 +25,9 @@ export class EmployeeListComponent implements OnInit {
 
 
     getEmployee() {
+        console.log("I am here now")
         this._employeeDataService.getData().subscribe(
-            employees => {
+            (employees) => {
                 this.employees = employees;   
             },
             error => this.errorMessage = <any>error
@@ -40,6 +41,9 @@ export class EmployeeListComponent implements OnInit {
         this.display = true;
     } 
   
+   getEmployeeList():Employee[] {
+      return this.employees
+  }
 }
 
 

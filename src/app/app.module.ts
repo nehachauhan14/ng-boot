@@ -24,7 +24,8 @@ import { EmployeeAddComponent } from './employee/employee-add/employee-add.compo
     FormsModule
   ],
   providers: [
-    EmployeeService
+    EmployeeService,
+    EmployeeListComponent
   ],
   bootstrap: [AppComponent]
 })
