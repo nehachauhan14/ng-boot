@@ -36,10 +36,10 @@ export class EmployeeListComponent implements OnInit {
     
   display: boolean = false;
   
-  updateClick()
-    {
+     updateClick() {
         this.display = true;
-    }
+    } 
+  
 }
 
 

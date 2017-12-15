@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import {FormsModule} from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -14,12 +15,13 @@ import { EmployeeAddComponent } from './employee/employee-add/employee-add.compo
   declarations: [
     AppComponent,
     EmployeeComponent,
-    EmployeeListComponent,
     EmployeeEditComponent,
+    EmployeeListComponent,
     EmployeeAddComponent],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule, 
+    FormsModule
   ],
   providers: [
     EmployeeService

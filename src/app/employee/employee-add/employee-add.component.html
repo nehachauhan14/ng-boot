@@ -15,26 +15,29 @@
             <h1 class="modal-title" style = "text-align: center">Add New Employee</h1>
           </div>
           <div class="modal-body">
-            <div class="form-group">
+         <!--  <form #ngform ng-form="addNewEmloyeeForm" (onsubmit)="addEmployee()">         -->   
+             <div class="form-group" >
               <label for="firstName">First Name:</label>
-              <input type="text" class="form-control" id="firstName">
+              <input type="text" class="form-control" name="firstName" [(ngModel)]="newEmp.firstName"  required>
               <label for="lastName">Last Name:</label>
-              <input type="text" class="form-control" id="lastName">
+              <input type="text" class="form-control" name="lastName" [(ngModel)]="newEmp.lastName" required>
               <div class="radio">
                 <label>
-                  <input type="radio" name="optradio">Male</label>
+                  <input type="radio" name="optradio" >Male</label>
                 <label>
                   <input type="radio" name="optradio">Female</label>
               </div>
               <label for="salary">Salary:</label>
-              <input type="text" class="form-control" id="salary">
+              <input type="text" class="form-control" name="salary" [(ngModel)]="newEmp.salary" required>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+              <button type="submit" class="btn btn-primary"  data-dismiss="modal" (click)="addEmployee()">Save</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
+         <!-- </form> -->
           </div>
-  
+      
+        
         </div>
       </div>
     </div>

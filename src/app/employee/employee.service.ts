@@ -1,17 +1,18 @@
 import {Injectable } from "@angular/core"; 
 import {Employee} from './employee';
-import {Http , Response} from "@angular/http";
+import {Http , Response ,Headers ,  RequestOptions} from "@angular/http";
 import {Observable} from 'rxjs/Observable'; 
 
 @Injectable()
 export class EmployeeService
 {
+    private url = "http://localhost:57163/api/Employees/"; 
     constructor(private http : Http)
     {
 
     }
     getData():Observable<Employee[]> {
-        return this.http.get('http://localhost:57163/api/Employees/')
+        return this.http.get(this.url)
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -29,4 +30,21 @@ export class EmployeeService
         console.error(errMsg); // log to console instead
         return Observable.throw(errMsg);
     }
+
+    test():Observable<Employee[]> {
+        return this.http.get(this.url)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+    
+    insertData(employee: Employee): Observable<Employee[]> {
+        
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post(this.url, employee, options ).map((res: Response) => res.json());
+    //    return this.http.post(this.url, employee, options)
+    //                    .map(this.extractData)
+    //                    .catch(this.handleError);
+        }
 }
